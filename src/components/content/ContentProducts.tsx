@@ -42,6 +42,7 @@ type SkinProps = {
                 </div>
                 <div className="flex flex-row-reverse justify-center gap-10">
                     <button
+                        className="cursor-pointer"
                         onClick={() => {
                             if(displayContent.length > 8){
                                 setStartIndex(startIndex + 9)
@@ -50,6 +51,7 @@ type SkinProps = {
                     >Next
                     </button>
                     <button
+                        className="cursor-pointer"
                         onClick={() => {
                             if(startIndex > 0){
                                 setStartIndex(startIndex - 9)
