@@ -1,17 +1,20 @@
 import ContentAside from "./ContentAside";
 import ContentProducts from "./ContentProducts";
+import type { SkinProps } from "../../types"
 
 type Props = {
     filterChamp: string | null;
     setStartIndex: (startIndex: number) => void;
     startIndex: number;
+    setCart: React.Dispatch<React.SetStateAction<SkinProps[]>>;
+    cart: SkinProps[];
 }
 
-const ContentContainer = ({filterChamp, startIndex, setStartIndex}: Props) => {
+const ContentContainer = ({filterChamp, startIndex, setStartIndex, setCart, cart}: Props) => {
 return(
     <section className="flex gap-6 flex-col lg:flex-row justify-between w-9/10 m-auto">
         <ContentAside />
-        <ContentProducts filterChamp={filterChamp} startIndex={startIndex} setStartIndex={setStartIndex}/>
+        <ContentProducts filterChamp={filterChamp} startIndex={startIndex} setStartIndex={setStartIndex} setCart={setCart} cart={cart}/>
     </section>
 )
 }

@@ -2,23 +2,19 @@ import { useEffect, useState } from "react";
 
 import products from "../../data/products";
 import ContentCard from "./ContentCard";
+import type { SkinProps } from "../../types";
 
 type Props = {
     filterChamp: string | null;
     startIndex: number;
     setStartIndex: (startIndex: number) => void
+    setCart: React.Dispatch<React.SetStateAction<SkinProps[]>>;
+    cart: SkinProps[];
 }
 
-const ContentProducts = ({filterChamp, startIndex, setStartIndex}: Props) => {
+const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart}: Props) => {
 
-type SkinProps = {
-    id: number;
-    name: string;
-    rpPrice: string;
-    rarity: string;
-    champ: string;
-    image: string;
-};
+
 
     const contentList = products();
 
@@ -35,10 +31,12 @@ type SkinProps = {
             setDisplayContent(newFilterArray.slice(startIndex, (startIndex+9)))
     },[filterChamp, startIndex])
 
+
+
     return(
             <section className="w-full lg:w-6/8 h-full bg-teal-800 border-teal-900 border-2 rounded-xl p-5">
                 <h1 className="text-2xl">Product Listings</h1>
-                <div className="grid grid-cols-1 grid-rows-9 lg:grid-rows-3 lg:grid-cols-3 gap-3 items-center justify-center">
+                <div className="grid grid-cols-1 grid-rows-9 lg:grid-rows-3 lg:grid-cols-3 gap-10 items-center justify-center">
                     {
                         displayContent.map((skin) => {
                                 return(
@@ -47,7 +45,10 @@ type SkinProps = {
                                         skinName={skin.name} 
                                         skinImage={skin.image} 
                                         skinPrice={skin.rpPrice}
+                                        setCart={setCart}
                                         rarity={skin.rarity}
+                                        skin={skin}
+                                        cart={cart}
                                     />
                                 )
                         }                                                    

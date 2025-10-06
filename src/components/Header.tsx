@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 type Props = {
     setFilterChamp: (champ:string | null ) => void;
     setStartIndex: (startIndex: number) => void;
+    cart: object[];
 }
 
 
-const Header = ({setFilterChamp, setStartIndex}: Props) => {
+const Header = ({setFilterChamp, setStartIndex, cart}: Props) => {
 
 const [scrolled, setScrolled] = useState<boolean>(false);
 const [hamburgerToggle, setHamburgerToggle] = useState<boolean>(false);
@@ -38,7 +39,12 @@ useEffect(() => {
                             <ul className={`flex flex-col justify-center items-center h-full gap-15 ${hamburgerToggle ? "flex-col" : "flex-row"}`}>
                                 <li>Home</li>
                                 <li>Shop</li>
-                                <li><img src="shoppingCart.png" alt="" /></li>
+                                <li>
+                                    <div className="flex">
+                                        <img src="shoppingCart.png" alt="" />
+                                        <span className="text-xl">{cart.length}</span>
+                                    </div>
+                                </li>
                             </ul>
                         </nav>
                     </section>
