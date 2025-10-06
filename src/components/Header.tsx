@@ -1,6 +1,6 @@
 const Header = () => {
     return (
-        <header className="sticky w-9/10 bg-teal-800 h-40 m-auto mt-6 rounded-2xl flex flex-col justify-center border-2 border-teal-900 text-2xl">
+        <header className="sticky top-5 z-50 w-9/10 bg-teal-800 h-40 m-auto mt-6 rounded-2xl flex flex-col justify-center border-2 border-teal-900 text-2xl">
             <div className="flex flex-row justify-between items-center h-1/2">
                 <img className="w-20 ml-6" src="../../public/placeholder.png" alt="" />
                 <section className="flex flex-row h-full justify-center items-center gap-6 mr-6">
@@ -16,11 +16,10 @@ const Header = () => {
             </div>
             <nav className="border-t-2 border-t-teal-900 h-1/2">
                 <ul className="flex flex-row items-center gap-6 h-full pl-6">
-                    <li>Category 1</li>
-                    <li>Category 2</li>
-                    <li>Category 3</li>
-                    <li>Category 4</li>
-                    <li>Category 5</li>
+                    <li>Viego</li>
+                    <li>Kha'Zix</li>
+                    <li>Sion</li>
+                    <li>Jarvan IV</li>
                 </ul>
             </nav>
         </header>
