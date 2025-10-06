@@ -15,18 +15,18 @@ type SkinProps = {
 };
 
     const contentList = products();
-    
+
     const [startIndex, setStartIndex] = useState<number>(0);
     const [displayContent, setDisplayContent] = useState<SkinProps[]>(contentList.slice(startIndex, (startIndex+9)))
 
     useEffect(() => {
        setDisplayContent(contentList.slice(startIndex, (startIndex+9)))
-    },[startIndex, contentList])
+    },[startIndex])
 
     return(
-            <section className="w-6/8 h-full bg-teal-800 border-teal-900 border-2 rounded-xl p-5">
+            <section className="w-full lg:w-6/8 h-full bg-teal-800 border-teal-900 border-2 rounded-xl p-5">
                 <h1 className="text-2xl">Product Listings</h1>
-                <div className="grid grid-cols-3 grid-rows-3 gap-3 items-center justify-center">
+                <div className="grid grid-cols-1 grid-rows-9 lg:grid-rows-3 lg:grid-cols-3 gap-3 items-center justify-center">
                     {
                         displayContent.map((skin) => {
                                 return(
@@ -54,7 +54,6 @@ type SkinProps = {
                             if(startIndex > 0){
                                 setStartIndex(startIndex - 9)
                             }
-
                         }}
                     >Back</button>
                 </div>

@@ -7,12 +7,12 @@ function App() {
 
     return (
         <>
-        <main className="flex flex-col gap-8">
-            <Header />
-            <Banner />
-            <ContentContainer />
-            <Footer />
-        </main>
+            <main className="flex flex-col gap-8">
+                <Header />
+                <Banner />
+                <ContentContainer />
+                <Footer />
+            </main>
         </>
     )
 }
