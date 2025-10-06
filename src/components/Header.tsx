@@ -45,23 +45,23 @@ useEffect(() => {
                 </div> 
                 <nav className={`${hamburgerToggle ? "" : "hidden"} md:flex border-t-2 border-t-teal-900 h-1/2`}>
                     <ul className="flex flex-col lg:flex-row items-center gap-6 h-full p-6">
-                        <li onClick={() => {
+                        <li className="cursor-pointer" onClick={() => {
                             setFilterChamp(null)
                             setStartIndex(0)
                         }}>All</li>
-                        <li onClick={() => {
+                        <li className="cursor-pointer" onClick={() => {
                             setFilterChamp("Viego")
                             setStartIndex(0)
                         }}>Viego</li>
-                        <li onClick={() => {
+                        <li className="cursor-pointer" onClick={() => {
                             setFilterChamp("Kha'Zix")
                             setStartIndex(0)
                         }}>Kha'Zix</li>
-                        <li onClick={() => {
+                        <li className="cursor-pointer" onClick={() => {
                             setFilterChamp("Sion")
                             setStartIndex(0)
                         }}>Sion</li>
-                        <li onClick={() =>{
+                        <li className="cursor-pointer" onClick={() =>{
                             setFilterChamp("Jarvan IV")
                             setStartIndex(0)
 

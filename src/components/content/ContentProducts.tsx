@@ -27,13 +27,12 @@ type SkinProps = {
     useEffect(() => {
         if(filterChamp !== null) return;
         setDisplayContent(contentList.slice(startIndex, (startIndex+9)))
-    },[startIndex])
+    },[filterChamp, startIndex])
 
     useEffect(() => {
-        if(filterChamp !== null){
+        if(filterChamp === null) return;
             const newFilterArray = contentList.filter(product => product.champ === filterChamp)
             setDisplayContent(newFilterArray.slice(startIndex, (startIndex+9)))
-        }
     },[filterChamp, startIndex])
 
     return(

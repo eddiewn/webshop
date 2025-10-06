@@ -4,6 +4,7 @@ const ContentAside = () => {
             <section className="p-5 text-2xl">
             <h1 className="mb-2">Filter Rarities</h1>
                 <ul className="flex flex-col gap-2 w-full h-full bg-teal-900 text-xl rounded p-3">
+                    <li>All</li>
                     <li>Base</li>
                     <li>Standard</li>
                     <li>Deluxe</li>
