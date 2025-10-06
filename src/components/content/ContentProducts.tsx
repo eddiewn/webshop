@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import products from "../../data/products";
 import ContentCard from "./ContentCard";
 
-
 const ContentProducts = () => {
 
 type SkinProps = {
@@ -15,8 +14,8 @@ type SkinProps = {
     image: string;
 };
 
-
     const contentList = products();
+    
     const [startIndex, setStartIndex] = useState<number>(0);
     const [displayContent, setDisplayContent] = useState<SkinProps[]>(contentList.slice(startIndex, (startIndex+9)))
 

@@ -1,6 +1,5 @@
 import ContentAside from "./ContentAside";
 import ContentProducts from "./ContentProducts";
-import NextCard from "./NextCard";
 
 const ContentContainer = () => {
 return(
