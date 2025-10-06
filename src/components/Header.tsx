@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
-const Header = () => {
+type Props = {
+    setFilterChamp: (champ:string | null ) => void;
+    setStartIndex: (startIndex: number) => void;
+}
+
+
+const Header = ({setFilterChamp, setStartIndex}: Props) => {
 
 const [scrolled, setScrolled] = useState<boolean>(false);
 const [hamburgerToggle, setHamburgerToggle] = useState<boolean>(false);
@@ -23,7 +29,7 @@ useEffect(() => {
 },[])
 
     return (
-            <header className={`sticky top-0 z-50 w-screen bg-teal-800 h-30 lg:h-40 lg:m-auto lg:mt-6 lg:rounded-2xl flex flex-col justify-center border-2 border-teal-900 text-2xl transition-all ease-in-out duration-300 ${scrolled ? "lg:w-screen lg:top-0 rounded-none" : "lg:w-9/10" } ${hamburgerToggle ? "h-200 fixed": ""}`}>
+            <header className={`sticky top-0 z-50 w-screen bg-teal-800 h-30 lg:h-40 lg:m-auto lg:mt-6 lg:rounded-2xl flex flex-col justify-center border-2 border-teal-900 text-2xl transition-all ease-in-out duration-300 ${scrolled ? "lg:w-screen lg:top-0 lg:rounded-none" : "lg:w-9/10" } ${hamburgerToggle ? "h-200 fixed": ""}`}>
                 <div className={` md:flex lg:flex-row justify-between items-center h-1/2 ${hamburgerToggle ? "h-56 flex-col" : "hidden"} `}>
                     <img className="w-20 ml-6" src="../../public/placeholder.png" alt="" />
                     <section className="flex flex-col lg:flex-row h-full justify-center items-center gap-6 mr-6">
@@ -39,10 +45,27 @@ useEffect(() => {
                 </div> 
                 <nav className={`${hamburgerToggle ? "" : "hidden"} md:flex border-t-2 border-t-teal-900 h-1/2`}>
                     <ul className="flex flex-col lg:flex-row items-center gap-6 h-full p-6">
-                        <li>Viego</li>
-                        <li>Kha'Zix</li>
-                        <li>Sion</li>
-                        <li>Jarvan IV</li>
+                        <li onClick={() => {
+                            setFilterChamp(null)
+                            setStartIndex(0)
+                        }}>All</li>
+                        <li onClick={() => {
+                            setFilterChamp("Viego")
+                            setStartIndex(0)
+                        }}>Viego</li>
+                        <li onClick={() => {
+                            setFilterChamp("Kha'Zix")
+                            setStartIndex(0)
+                        }}>Kha'Zix</li>
+                        <li onClick={() => {
+                            setFilterChamp("Sion")
+                            setStartIndex(0)
+                        }}>Sion</li>
+                        <li onClick={() =>{
+                            setFilterChamp("Jarvan IV")
+                            setStartIndex(0)
+
+                        }}>Jarvan IV</li>
                     </ul>
                 </nav>
 
