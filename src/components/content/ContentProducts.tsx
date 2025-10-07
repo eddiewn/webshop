@@ -13,7 +13,7 @@ type Props = {
     rarityFilter: string | null;
 }
 
-const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart}: Props) => {
+const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart, rarityFilter}: Props) => {
 
 
 
@@ -24,15 +24,37 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart}
     useEffect(() => {
         if(filterChamp !== null) return;
         setDisplayContent(contentList.slice(startIndex, (startIndex+9)))
-    },[filterChamp, startIndex])
+    },[filterChamp, startIndex, contentList])
 
     useEffect(() => {
-        if(filterChamp === null) return;
+        if(filterChamp !== null){
             const newFilterArray = contentList.filter(product => product.champ === filterChamp)
+            if(rarityFilter !== null){
+                const newFilterArray2 = newFilterArray.filter(product => product.rarity === rarityFilter)
+                setDisplayContent(newFilterArray2.slice(startIndex, (startIndex+9)))
+                return;
+            }else{
+                setDisplayContent(newFilterArray.slice(startIndex,(startIndex + 9)));
+            }
             setDisplayContent(newFilterArray.slice(startIndex, (startIndex+9)))
-    },[filterChamp, startIndex])
+            return;
+        }else{
+            if(rarityFilter !== null){
+                const newFilterArray = contentList.filter(product => product.rarity === rarityFilter)
+                setDisplayContent(newFilterArray.slice(startIndex, (startIndex + 9)))
+                return;
+            }else{
+                setDisplayContent(contentList.slice(startIndex,(startIndex + 9)));
+                return;
+            }
+        }
 
+    },[filterChamp, startIndex, contentList, rarityFilter])
 
+    // useEffect(() => {
+    //     const newFilterArray = contentList.filter(product => product.rarity === rarityFilter)
+    //     setDisplayContent(newFilterArray)
+    // },[rarityFilter, contentList])
 
     return(
             <section className="w-full lg:w-6/8 h-full bg-teal-800 border-teal-900 border-2 rounded-xl p-5">
