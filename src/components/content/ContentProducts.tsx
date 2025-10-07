@@ -24,7 +24,7 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
     useEffect(() => {
         if(filterChamp !== null) return;
         setDisplayContent(contentList.slice(startIndex, (startIndex+9)))
-    },[filterChamp, startIndex, contentList])
+    },[filterChamp, startIndex])
 
     useEffect(() => {
         if(filterChamp !== null){
@@ -34,10 +34,10 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
                 setDisplayContent(newFilterArray2.slice(startIndex, (startIndex+9)))
                 return;
             }else{
-                setDisplayContent(newFilterArray.slice(startIndex,(startIndex + 9)));
+                setDisplayContent(newFilterArray.slice(startIndex, (startIndex+9)))
+                return;
             }
-            setDisplayContent(newFilterArray.slice(startIndex, (startIndex+9)))
-            return;
+
         }else{
             if(rarityFilter !== null){
                 const newFilterArray = contentList.filter(product => product.rarity === rarityFilter)
@@ -49,12 +49,11 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
             }
         }
 
-    },[filterChamp, startIndex, contentList, rarityFilter])
+    },[filterChamp, startIndex, rarityFilter])
 
-    // useEffect(() => {
-    //     const newFilterArray = contentList.filter(product => product.rarity === rarityFilter)
-    //     setDisplayContent(newFilterArray)
-    // },[rarityFilter, contentList])
+    useEffect(() => {
+        console.log(rarityFilter)
+    },[rarityFilter])
 
     return(
             <section className="w-full lg:w-6/8 h-full bg-teal-800 border-teal-900 border-2 rounded-xl p-5">

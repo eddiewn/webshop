@@ -1,3 +1,4 @@
+
 type Props = {
     setRarityFilter: React.Dispatch<React.SetStateAction<string | null>>;
 }
@@ -24,7 +25,7 @@ const ContentAside = ({setRarityFilter}: Props) => {
                     {allRarities.map((rarity) => {
                         return(
                             <li className="cursor-pointer" onClick={(() => {
-                                setRarityFilter(rarity)
+                                setRarityFilter(rarity == "All" ? null : rarity)
                         })}>{rarity}</li>
                         )
                     })}
