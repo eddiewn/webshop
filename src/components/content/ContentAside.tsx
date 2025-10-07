@@ -10,12 +10,15 @@ const ContentAside = ({setRarityFilter, rarityFilter}: Props) => {
         "All",
         "Base",
         "Standard",
+        "Legacy",
+        "Rare",
         "Deluxe",
         "Epic",
         "Legendary",
         "Ultimate",
         "Mythic",
         "Prestige",
+        "Exalted", 
     ]
 
     return(

@@ -14,9 +14,6 @@ type Props = {
 }
 
 const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart, rarityFilter}: Props) => {
-
-
-
     const contentList = products();
 
     const [displayContent, setDisplayContent] = useState<SkinProps[]>(contentList.slice(startIndex, (startIndex+9)));
@@ -27,28 +24,15 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
     },[filterChamp, startIndex])
 
     useEffect(() => {
-        if(filterChamp !== null){
-            const newFilterArray = contentList.filter(product => product.champ === filterChamp)
-            if(rarityFilter !== null){
-                const newFilterArray2 = newFilterArray.filter(product => product.rarity === rarityFilter)
-                setDisplayContent(newFilterArray2.slice(startIndex, (startIndex+9)))
-                return;
-            }else{
-                setDisplayContent(newFilterArray.slice(startIndex, (startIndex+9)))
-                return;
-            }
-
-        }else{
-            if(rarityFilter !== null){
-                const newFilterArray = contentList.filter(product => product.rarity === rarityFilter)
-                setDisplayContent(newFilterArray.slice(startIndex, (startIndex + 9)))
-                return;
-            }else{
-                setDisplayContent(contentList.slice(startIndex,(startIndex + 9)));
-                return;
-            }
+    let filtered = contentList;
+        if (filterChamp !== null) {
+            filtered = filtered.filter(product => product.champ === filterChamp);
         }
 
+        if (rarityFilter !== null) {
+            filtered = filtered.filter(product => product.rarity === rarityFilter);
+        }
+        setDisplayContent(filtered.slice(startIndex, startIndex + 9));
     },[filterChamp, startIndex, rarityFilter])
 
     useEffect(() => {

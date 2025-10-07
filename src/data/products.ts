@@ -33,7 +33,7 @@ const products = () => [
   { id: 27, name: "High Noon Sion", rpPrice: "1350 RP", rarity: "Epic", champ: "Sion", image: "sion/High_Noon_Sion.jpg" },
 
   // Jarvan IV
-  { id: 28, name: "Original Jarvan IV", rpPrice: "Free / Champion Price", rarity: "Base", champ: "Jarvan IV", image: "jarvan_iv/Original_Jarvan_IV.jpg" },
+  { id: 28, name: "Original Jarvan IV", rpPrice: "Free", rarity: "Base", champ: "Jarvan IV", image: "jarvan_iv/Original_Jarvan_IV.jpg" },
   { id: 29, name: "Commando Jarvan IV", rpPrice: "520 RP", rarity: "Rare", champ: "Jarvan IV", image: "jarvan_iv/Commando_Jarvan_IV.jpg" },
   { id: 30, name: "Dragonslayer Jarvan IV", rpPrice: "750 RP", rarity: "Rare", champ: "Jarvan IV", image: "jarvan_iv/Dragonslayer_Jarvan_IV.jpg" },
   { id: 31, name: "Darkforge Jarvan IV", rpPrice: "975 RP", rarity: "Legacy", champ: "Jarvan IV", image: "jarvan_iv/Darkforge_Jarvan_IV.jpg" },
