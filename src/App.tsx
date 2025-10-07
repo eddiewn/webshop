@@ -21,7 +21,7 @@ function App() {
     return (
         <>
             <main className="flex flex-col gap-8">
-                <Header cart={cart} setFilterChamp={setFilterChamp} setStartIndex={setStartIndex}/>
+                <Header cart={cart} setFilterChamp={setFilterChamp} setStartIndex={setStartIndex} filterChamp={filterChamp}/>
                 <Banner />
                 <ContentContainer filterChamp={filterChamp} startIndex={startIndex} setStartIndex={setStartIndex} setCart={setCart} cart={cart}/>
                 <Footer />

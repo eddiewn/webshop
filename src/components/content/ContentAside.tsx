@@ -1,9 +1,10 @@
 
 type Props = {
     setRarityFilter: React.Dispatch<React.SetStateAction<string | null>>;
+    rarityFilter: string | null;
 }
 
-const ContentAside = ({setRarityFilter}: Props) => {
+const ContentAside = ({setRarityFilter, rarityFilter}: Props) => {
 
     const allRarities = [
         "All",
@@ -24,7 +25,7 @@ const ContentAside = ({setRarityFilter}: Props) => {
                 <ul className="flex flex-col gap-2 w-full h-full bg-teal-900 text-xl rounded p-3">
                     {allRarities.map((rarity) => {
                         return(
-                            <li className="cursor-pointer" onClick={(() => {
+                            <li className={`cursor-pointer ${rarity === rarityFilter || (rarity === "All" && rarityFilter === null) ? "text-white" : ""}`} onClick={(() => {
                                 setRarityFilter(rarity == "All" ? null : rarity)
                         })}>{rarity}</li>
                         )
