@@ -10,6 +10,7 @@ type Props = {
     setStartIndex: (startIndex: number) => void
     setCart: React.Dispatch<React.SetStateAction<SkinProps[]>>;
     cart: SkinProps[];
+    rarityFilter: string | null;
 }
 
 const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart}: Props) => {
