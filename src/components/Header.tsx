@@ -4,23 +4,27 @@ import products from "../data/products";
 
 const fuse = new Fuse(products(), {
     keys: ["name", "champ"],
+    threshold: 0.4, 
 });
 
-const results = fuse.search("Viego");
 
-console.log(results);
+
 
 type Props = {
     setFilterChamp: (champ: string | null) => void;
     setStartIndex: (startIndex: number) => void;
     cart: object[];
     filterChamp: string | null;
+    setFilterSpecificSkin: (champ: string | null) => void;
 };
 
-const Header = ({setFilterChamp, setStartIndex, cart, filterChamp}: Props) => {
+const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpecificSkin}: Props) => {
     const [scrolled, setScrolled] = useState<boolean>(false);
     const [hamburgerToggle, setHamburgerToggle] = useState<boolean>(false);
     const [showResults, setShowResults] = useState<boolean>(false);
+    const [searchText, setSearchText] = useState<string>("")
+
+    const results = fuse.search(searchText);
 
     const scrollFunc = () => {
         if (window.scrollY > 20) {
@@ -29,6 +33,8 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp}: Props) => {
             setScrolled(false);
         }
     };
+
+    useState()
 
     useEffect(() => {
         console.log(hamburgerToggle);
@@ -61,30 +67,43 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp}: Props) => {
                     alt=""
                 />
                 <section className="flex flex-col lg:flex-row h-full justify-center items-center gap-6 mr-6">
-                    <div className="relative">
+                    <nav className="relative">
                         <input
-                            className="border-2 border-gray-500 rounded-xl h-3/5 pl-6"
+                            className="border-2 border-gray-500 rounded-xl h-3/5 pl-6 bg-white"
                             type="text"
                             placeholder="Search..."
                             onFocus={() => {
                                 setShowResults(!showResults);
                             }}
                             onBlur={() => {
-                                setShowResults(!showResults);
+                                setTimeout(() => {
+                                    setShowResults(!showResults);
+                                },1000)
+                            }}
+                            onChange={(e) => {
+                                setSearchText(e.target.value)
                             }}
                         />
                         {showResults ? (
-                            <div className="absolute bg-white w-full">
+                            <ul className="top-11 absolute bg-white w-full rounded">
                                 {results.slice(0, 5).map((result) => (
-                                    <h1 key={result.item.id}>
+                                    <li 
+                                    key={result.item.id}
+                                    className="cursor-pointer"
+                                    onClick={() => {
+                                        setFilterSpecificSkin(result.item.name)
+                                        setFilterChamp(result.item.champ)
+                                        setStartIndex(0)
+                                    }}
+                                    >
                                         {result.item.name}
-                                    </h1>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         ) : (
                             ""
                         )}
-                    </div>
+                    </nav>
                     <nav>
                         <ul
                             className={`flex flex-col justify-center items-center h-full gap-15 ${

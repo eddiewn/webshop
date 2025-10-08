@@ -12,6 +12,7 @@ function App() {
 
     const [filterChamp, setFilterChamp] = useState<string | null>(null)
     const [startIndex, setStartIndex] = useState<number>(0);
+    const [filterSpecificSkin, setFilterSpecificSkin]= useState<string | null>(null)
     const [cart, setCart] = useState<SkinProps[]>([])
     
     useEffect(() => {
@@ -21,9 +22,9 @@ function App() {
     return (
         <>
             <main className="flex flex-col gap-8">
-                <Header cart={cart} setFilterChamp={setFilterChamp} setStartIndex={setStartIndex} filterChamp={filterChamp}/>
+                <Header cart={cart} setFilterChamp={setFilterChamp} setStartIndex={setStartIndex} filterChamp={filterChamp} setFilterSpecificSkin={setFilterSpecificSkin}/>
                 <Banner />
-                <ContentContainer filterChamp={filterChamp} startIndex={startIndex} setStartIndex={setStartIndex} setCart={setCart} cart={cart}/>
+                <ContentContainer filterChamp={filterChamp} startIndex={startIndex} setStartIndex={setStartIndex} setCart={setCart} cart={cart} filterSpecificSkin={filterSpecificSkin}/>
                 <Footer />
             </main>
         </>

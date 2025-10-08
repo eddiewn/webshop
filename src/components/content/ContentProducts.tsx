@@ -11,9 +11,10 @@ type Props = {
     setCart: React.Dispatch<React.SetStateAction<SkinProps[]>>;
     cart: SkinProps[];
     rarityFilter: string | null;
+    filterSpecificSkin: string;
 }
 
-const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart, rarityFilter}: Props) => {
+const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart, rarityFilter, filterSpecificSkin}: Props) => {
     const contentList = products();
 
     const [displayContent, setDisplayContent] = useState<SkinProps[]>(contentList.slice(startIndex, (startIndex+9)));
@@ -32,8 +33,12 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
         if (rarityFilter !== null) {
             filtered = filtered.filter(product => product.rarity === rarityFilter);
         }
+
+        if (filterSpecificSkin !== null){
+            filtered = filtered.filter(product => product.name === filterSpecificSkin);
+        }
         setDisplayContent(filtered.slice(startIndex, startIndex + 9));
-    },[filterChamp, startIndex, rarityFilter])
+    },[filterChamp, startIndex, rarityFilter, filterSpecificSkin])
 
     useEffect(() => {
         console.log(rarityFilter)
@@ -48,7 +53,7 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
                                 return(
                                     <ContentCard 
                                         key={skin.id}
-                                        skinName={skin.name} 
+                                        skinName={skin.name}
                                         skinImage={skin.image} 
                                         skinPrice={skin.rpPrice}
                                         setCart={setCart}
