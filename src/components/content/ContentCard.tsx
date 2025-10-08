@@ -15,7 +15,7 @@ const ContentCard = ({key, skinName, skinImage, skinPrice, setCart,rarity, skin,
     return(
         <div key={key} className="flex flex-col items-center gap-3
         bg-white w-full lg:w-3/4 h-100 rounded-4xl shadow-[10px_10px_10px_rgba(0,0,0,0.2)]">
-            <img className="rounded-t-4xl" src={skinImage} alt="" />
+            <img className="rounded-t-4xl w-full h-48 object-cover" src={skinImage} alt="" />
             <h1 className="text-yellow-600 text-2xl text-center">{skinName}</h1>
             <p>{skinPrice}</p>
             <p>{rarity}</p>
