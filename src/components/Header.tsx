@@ -92,9 +92,7 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                                     key={result.item.id}
                                     className="cursor-pointer"
                                     onClick={() => {
-                                        if(filterSpecificSkin === null){
-                                            setFilterSpecificSkin(result.item.name)
-                                        }
+                                        setFilterSpecificSkin(result.item.name)
                                         setStartIndex(0)
                                     }}
                                     >
