@@ -4,11 +4,8 @@ import products from "../data/products";
 
 const fuse = new Fuse(products(), {
     keys: ["name", "champ"],
-    threshold: 0.4, 
+    threshold: 0.4,
 });
-
-
-
 
 type Props = {
     setFilterChamp: (champ: string | null) => void;
@@ -18,10 +15,16 @@ type Props = {
     setFilterSpecificSkin: (champ: string | null) => void;
     filterSpecificSkin: string | null;
     setRarityFilter: React.Dispatch<React.SetStateAction<string | null>>;
-
 };
 
-const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpecificSkin, setRarityFilter}: Props) => {
+const Header = ({
+    setFilterChamp,
+    setStartIndex,
+    cart,
+    filterChamp,
+    setFilterSpecificSkin,
+    setRarityFilter,
+}: Props) => {
     const [scrolled, setScrolled] = useState<boolean>(false);
     const [hamburgerToggle, setHamburgerToggle] = useState<boolean>(false);
     const [showResults, setShowResults] = useState<boolean>(false);
@@ -45,63 +48,59 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
         return () => window.removeEventListener("scroll", scrollFunc);
     }, []);
 
-    useEffect(() => {
-
-    })
+    useEffect(() => {});
 
     const champs = ["All", "Viego", "Kha'Zix", "Sion", "Jarvan IV"];
 
     return (
         <header
-            className={`sticky top-0 z-50 w-screen bg-[var(--primary-bg)] h-30 lg:h-40 lg:m-auto lg:mt-6 lg:rounded-2xl text-2xl border-white border-b-0
-                flex flex-col justify-center 
+            className={`m-auto sticky top-0 z-50 w-screen bg-[var(--primary-bg)] h-25 lg:h-30 mt-6 text-2xl border-white border-b-0
+                flex flex-col
                 ease-in-out duration-300 ${
                     scrolled
                         ? "lg:w-screen lg:top-0 lg:rounded-none border-b-2 shadow "
                         : "lg:w-9/10 "
-                } ${hamburgerToggle ? "h-200 fixed" : ""}`}
+                } `}
         >
             <div
-                className={` md:flex lg:flex-row justify-between items-center h-1/2 ${
-                    hamburgerToggle ? "h-56 flex-col" : "hidden"
-                } `}
+                className={`flex lg:flex-row justify-between items-center h-full lg:h-1/2 `}
             >
                 <img
-                    className="h-4/5 w-20 ml-3 rounded"
+                    className="h-3/5 lg:h-4/5 w-20 ml-3 rounded"
                     src="/viegoChampie.webp"
                     alt=""
                 />
-                <section className="flex flex-col lg:flex-row h-full justify-center items-center gap-6 mr-6">
-                    <nav className="relative">
                         <input
-                            className="border-2 border-gray-500 rounded-xl h-3/5 pl-6 bg-white"
+                            className="border-2 border-gray-500 rounded-xl w-40 h-3/5 pl-2 lg:pl-6 bg-white"
                             type="text"
                             placeholder="Search..."
                             onFocus={() => {
                                 setShowResults(!showResults);
                             }}
                             onBlur={() => {
-                                if(searchText !== ""){
-                                    setShowResults(!showResults)
+                                if (searchText !== "") {
+                                    setShowResults(!showResults);
                                 }
                             }}
                             onChange={(e) => {
-                                setSearchText(e.target.value)
+                                setSearchText(e.target.value);
                             }}
                         />
                         {showResults ? (
                             <ul className="top-11 absolute bg-white w-full rounded p-3">
                                 {results.slice(0, 5).map((result) => (
-                                    <li 
-                                    key={result.item.id}
-                                    className="cursor-pointer"
-                                    onClick={() => {
-                                        setFilterSpecificSkin(result.item.name)
-                                        setRarityFilter(result.item.rarity)
-                                        setFilterChamp(result.item.champ)
-                                        setStartIndex(0)
-                                        setShowResults(!showResults);
-                                    }}
+                                    <li
+                                        key={result.item.id}
+                                        className="cursor-pointer"
+                                        onClick={() => {
+                                            setFilterSpecificSkin(
+                                                result.item.name
+                                            );
+                                            setRarityFilter(result.item.rarity);
+                                            setFilterChamp(result.item.champ);
+                                            setStartIndex(0);
+                                            setShowResults(!showResults);
+                                        }}
                                     >
                                         {result.item.name}
                                     </li>
@@ -110,29 +109,31 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                         ) : (
                             ""
                         )}
+                    <nav className="flex flex-row justify-center items-center h-full">
+                        <img src="shoppingCart.png" alt="" />
+                        <span className="text-xl">{cart.length}</span>
                     </nav>
-                    <nav>
-                        <ul
-                            className={`flex flex-col justify-center items-center h-full gap-15 ${
-                                hamburgerToggle ? "flex-col" : "flex-row"
-                            }`}
-                        >
-                            <li>Home</li>
-                            <li>Shop</li>
-                            <li>
-                                <div className="flex w-5 mr-3 gap-1">
-                                    <img src="shoppingCart.png" alt="" />
-                                    <span className="text-xl">
-                                        {cart.length}
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                </section>
+                {/*Hamburger Menu*/}
+                <div className="md:hidden flex">
+                    <button
+                        className="flex flex-col justify-center gap-1"
+                        onClick={() => setHamburgerToggle(!hamburgerToggle)}
+                        aria-label="Toggle menu"
+                    >
+                        <span className="w-8 h-1 bg-white rounded"></span>
+                        <span className="w-8 h-1 bg-white rounded"></span>
+                        <span className="w-8 h-1 bg-white rounded"></span>
+                    </button>
+                </div>
             </div>
-            <nav className={`${hamburgerToggle ? "" : "hidden"} md:flex h-1/2`}>
-                <ul className={`flex flex-col lg:flex-row items-center gap-6 h-full p-6 bg-white ${scrolled ? "rounded-tr-xl shadow-[2px_-2px_5px_-5px_rgba(0,0,0,0.5)]" : "rounded-xl shadow"}`}>
+            <nav className={`${hamburgerToggle ? "" : "hidden"} md:flex flex-row w-full h-0 lg:h-1/2`}>
+                <ul
+                    className={`flex lg:flex-row flex-col items-center gap-6 lgh-full p-6 bg-white ${
+                        scrolled
+                            ? "rounded-tr-xl shadow-[2px_-2px_5px_-5px_rgba(0,0,0,0.5)]"
+                            : "rounded-xl shadow"
+                    }`}
+                >
                     {champs.map((champ) => {
                         return (
                             <li
@@ -147,7 +148,7 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                                         champ == "All" ? null : champ
                                     );
                                     setStartIndex(0);
-                                    setFilterSpecificSkin(null)
+                                    setFilterSpecificSkin(null);
                                 }}
                             >
                                 {champ}
@@ -156,15 +157,6 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                     })}
                 </ul>
             </nav>
-
-            <div
-                onClick={() => setHamburgerToggle(!hamburgerToggle)}
-                className="relative md:hidden"
-            >
-                <span className="absolute w-10 h-2 bg-teal-950 border-teal-900 border-2 right-15 bottom-[60%] translate-1/2 rounded"></span>
-                <span className="absolute w-10 h-2 bg-teal-950 border-teal-900 border-2 right-15 bottom-[50%] translate-1/2 rounded"></span>
-                <span className="absolute w-10 h-2 bg-teal-950 border-teal-900 border-2 right-15 bottom-[40%] translate-1/2 rounded-2xl"></span>
-            </div>
         </header>
     );
 };

@@ -67,7 +67,7 @@ const ContentProducts = ({
             <div
                 className="
                     grid grid-cols-1 grid-rows-9 place-items-center gap-y-10 auto-rows-fr
-                    lg:grid-rows-1 lg:grid-cols-3" 
+                    lg:grid-rows-1 md:grid-rows-3 lg:grid-cols-3" 
             >
                 {displayContent.map((skin) => {
                     return (
