@@ -21,7 +21,7 @@ const ContentCard = ({key, skinName, skinImage, skinPrice, setCart,rarity, skin,
                 <p>{rarity}</p>
                 <button className="text-xl cursor-pointer text-teal-50 bg-[var(--secondary-bg)] rounded-full py-3 px-6 w-4/5 mt-auto mb-8" onClick={() => {
                     if(cart.some(item => item.id === skin.id)){
-                        const newCart = cart.filter(item => item.id !== item.id)
+                        const newCart = cart.filter(item => item.id !== skin.id)
                         setCart(newCart)
                         return;
                     }
