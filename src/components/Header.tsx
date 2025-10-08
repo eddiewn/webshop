@@ -53,7 +53,7 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                 flex flex-col justify-center 
                 ease-in-out duration-300 ${
                     scrolled
-                        ? "lg:w-screen lg:top-0 lg:rounded-none border-b-2 "
+                        ? "lg:w-screen lg:top-0 lg:rounded-none border-b-2 shadow "
                         : "lg:w-9/10 "
                 } ${hamburgerToggle ? "h-200 fixed" : ""}`}
         >
@@ -127,14 +127,14 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                 </section>
             </div>
             <nav className={`${hamburgerToggle ? "" : "hidden"} md:flex h-1/2`}>
-                <ul className="flex flex-col lg:flex-row items-center gap-6 h-full p-6">
+                <ul className={`flex flex-col lg:flex-row items-center gap-6 h-full p-6 bg-white ${scrolled ? "rounded-tr-xl shadow-[2px_-2px_5px_-5px_rgba(0,0,0,0.5)]" : "rounded-xl shadow"}`}>
                     {champs.map((champ) => {
                         return (
                             <li
                                 className={`cursor-pointer ${
                                     champ === filterChamp ||
                                     (champ === "All" && filterChamp === null)
-                                        ? "text-white"
+                                        ? "text-blue-300"
                                         : ""
                                 }`}
                                 onClick={() => {
