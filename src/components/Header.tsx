@@ -27,7 +27,7 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
     const [showResults, setShowResults] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>("");
 
-    const results = fuse.search(searchText);
+    const results = fuse.search(searchText ? searchText : "Viego");
 
     const scrollFunc = () => {
         if (window.scrollY > 20) {
@@ -80,12 +80,17 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                             onFocus={() => {
                                 setShowResults(!showResults);
                             }}
+                            onBlur={() => {
+                                if(searchText !== ""){
+                                    setShowResults(!showResults)
+                                }
+                            }}
                             onChange={(e) => {
                                 setSearchText(e.target.value)
                             }}
                         />
                         {showResults ? (
-                            <ul className="top-11 absolute bg-white w-full rounded">
+                            <ul className="top-11 absolute bg-white w-full rounded p-3">
                                 {results.slice(0, 5).map((result) => (
                                     <li 
                                     key={result.item.id}
