@@ -31,8 +31,10 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp}: Props) => {
 
     return (
         <header
-            className={`sticky top-0 z-50 w-screen bg-teal-800 h-30 lg:h-40 lg:m-auto lg:mt-6 lg:rounded-2xl flex flex-col justify-center border-2 border-teal-900 text-2xl transition-all ease-in-out duration-300 ${
-                scrolled ? "lg:w-screen lg:top-0 lg:rounded-none" : "lg:w-9/10"
+            className={`sticky top-0 z-50 w-screen bg-[var(--primary-bg)] h-30 lg:h-40 lg:m-auto lg:mt-6 lg:rounded-2xl text-2xl border-white border-b-0
+                flex flex-col justify-center 
+                ease-in-out duration-300 ${
+                scrolled ? "lg:w-screen lg:top-0 lg:rounded-none border-b-2 " : "lg:w-9/10 "
             } ${hamburgerToggle ? "h-200 fixed" : ""}`}
         >
             <div
@@ -47,7 +49,7 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp}: Props) => {
                 />
                 <section className="flex flex-col lg:flex-row h-full justify-center items-center gap-6 mr-6">
                     <input
-                        className="border-2 border-teal-900 rounded-xl h-3/5 pl-6 mr-6"
+                        className="border-2 border-gray-500 rounded-xl h-3/5 pl-6 mr-6"
                         type="text"
                         placeholder="Search..."
                     />
@@ -74,7 +76,7 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp}: Props) => {
             <nav
                 className={`${
                     hamburgerToggle ? "" : "hidden"
-                } md:flex border-t-2 border-t-teal-900 h-1/2`}
+                } md:flex h-1/2`}
             >
                 <ul className="flex flex-col lg:flex-row items-center gap-6 h-full p-6">
                     {champs.map((champ) => {

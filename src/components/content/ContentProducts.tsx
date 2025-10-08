@@ -40,7 +40,7 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
     },[rarityFilter])
 
     return(
-            <section className="w-full lg:w-6/8 h-full bg-teal-800 border-teal-900 border-2 rounded-xl p-5">
+            <section className="w-full lg:w-6/8 h-full bg-[var(--primary-bg)  p-5">
                 <h1 className="text-2xl">Product Listings</h1>
                 <div className="grid grid-cols-1 grid-rows-9 lg:grid-rows-3 lg:grid-cols-3 gap-10 items-center justify-center">
                     {

@@ -14,18 +14,19 @@ type Props = {
 const ContentCard = ({key, skinName, skinImage, skinPrice, setCart,rarity, skin, cart}: Props) => {
     return(
         <div key={key} className="flex flex-col items-center gap-3
-        bg-teal-950 w-full lg:w-3/4 h-100 rounded-4xl shadow-[10px_10px_10px_rgba(0,0,0,0.7)]">
+        bg-[var(--bg-primary)] w-full lg:w-3/4 h-100 rounded-4xl shadow-[10px_10px_10px_rgba(0,0,0,0.7)]">
             <img className="rounded-t-4xl" src={skinImage} alt="" />
             <h1 className="text-yellow-600 text-2xl text-center">{skinName}</h1>
             <p>{skinPrice}</p>
             <p>{rarity}</p>
             <button className="text-2xl cursor-pointer text-teal-50 bg-teal-900 border-teal-800 border-2 rounded-full py-3 px-6 w-4/5 mt-auto mb-8" onClick={() => {
                 if(cart.some(item => item.id === skin.id)){
-                    console.log("Already in cart") 
+                    const newCart = cart.filter(item => item.id !== item.id)
+                    setCart(newCart)
                     return;
                 }
                 setCart(cart => [...cart, skin])
-            }}>Add to cart</button>
+            }}>{cart.some(item => item.id === skin.id) ? "Remove from Cart" : "Add to cart"}</button>
         </div>
     )
 }

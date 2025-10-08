@@ -22,13 +22,13 @@ const ContentAside = ({setRarityFilter, rarityFilter}: Props) => {
     ]
 
     return(
-        <aside className="w-full lg:w-2/10 h-full bg-teal-800 border-teal-900 border-2 rounded-xl">
+        <aside className="w-full lg:w-2/10 h-full bg-white rounded-xl">
             <section className="p-5 text-2xl">
-            <h1 className="mb-2">Filter Rarities</h1>
-                <ul className="flex flex-col gap-2 w-full h-full bg-teal-900 text-xl rounded p-3">
+            <h1 className="pb-3 text-center">Filter Rarities</h1>
+                <ul className="flex flex-col gap-2 w-full h-full text-xl rounded">
                     {allRarities.map((rarity) => {
                         return(
-                            <li className={`cursor-pointer ${rarity === rarityFilter || (rarity === "All" && rarityFilter === null) ? "text-white" : ""}`} onClick={(() => {
+                            <li className={`cursor-pointer ${rarity === rarityFilter || (rarity === "All" && rarityFilter === null) ? "text-blue-300" : ""}`} onClick={(() => {
                                 setRarityFilter(rarity == "All" ? null : rarity)
                         })}>{rarity}</li>
                         )

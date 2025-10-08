@@ -2,5 +2,10 @@
 
 body{
     margin: 0;
-    background-color: #0f6f61;
+    background-color: #e5f4fb;
+    font-family: monospace;
+}
+
+:root {
+  --primary-bg: #e5f4fb; /* Blue */
 }
