@@ -67,8 +67,8 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                 } `}
             >
                 <img
-                    className="w-20 ml-6"
-                    src="../../public/placeholder.png"
+                    className="h-4/5 w-20 ml-3 rounded"
+                    src="/viegoChampie.webp"
                     alt=""
                 />
                 <section className="flex flex-col lg:flex-row h-full justify-center items-center gap-6 mr-6">
