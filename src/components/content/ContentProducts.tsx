@@ -1,100 +1,123 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 import products from "../../data/products";
 import ContentCard from "./ContentCard";
-import type { SkinProps } from "../../types";
+import type {SkinProps} from "../../types";
 
 type Props = {
     filterChamp: string | null;
     startIndex: number;
-    setStartIndex: (startIndex: number) => void
+    setStartIndex: (startIndex: number) => void;
     setCart: React.Dispatch<React.SetStateAction<SkinProps[]>>;
     cart: SkinProps[];
     rarityFilter: string | null;
     filterSpecificSkin: string | null;
     setFilterSpecificSkin: (name: string) => void;
-}
+};
 
-const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart, rarityFilter, filterSpecificSkin}: Props) => {
+const ContentProducts = ({
+    filterChamp,
+    startIndex,
+    setStartIndex,
+    setCart,
+    cart,
+    rarityFilter,
+    filterSpecificSkin,
+}: Props) => {
     const contentList = products();
 
-    const [displayContent, setDisplayContent] = useState<SkinProps[]>(contentList.slice(startIndex, (startIndex+9)));
+    const [displayContent, setDisplayContent] = useState<SkinProps[]>(
+        contentList.slice(startIndex, startIndex + 9)
+    );
 
     useEffect(() => {
-        if(filterChamp !== null) return;
-        setDisplayContent(contentList.slice(startIndex, (startIndex+9)))
-    },[filterChamp, startIndex])
+        if (filterChamp !== null) return;
+        setDisplayContent(contentList.slice(startIndex, startIndex + 9));
+    }, [filterChamp, startIndex]);
 
     useEffect(() => {
-    let filtered = contentList;
+        let filtered = contentList;
         if (filterChamp !== null) {
-            filtered = filtered.filter(product => product.champ === filterChamp);
+            filtered = filtered.filter(
+                (product) => product.champ === filterChamp
+            );
         }
 
         if (rarityFilter !== null) {
-            filtered = filtered.filter(product => product.rarity === rarityFilter);
+            filtered = filtered.filter(
+                (product) => product.rarity === rarityFilter
+            );
         }
 
-        if (filterSpecificSkin !== null){
-            filtered = filtered.filter(product => product.name === filterSpecificSkin);
+        if (filterSpecificSkin !== null) {
+            filtered = filtered.filter(
+                (product) => product.name === filterSpecificSkin
+            );
         }
         setDisplayContent(filtered.slice(startIndex, startIndex + 9));
-    },[filterChamp, startIndex, rarityFilter, filterSpecificSkin])
+    }, [filterChamp, startIndex, rarityFilter, filterSpecificSkin]);
 
     useEffect(() => {
-        console.log(rarityFilter)
-    },[rarityFilter])
+        console.log(rarityFilter);
+    }, [rarityFilter]);
 
-    return(
-            <section className="w-full lg:w-6/8 h-full bg-[var(--primary-bg)] p-5">
-                <h1 className="text-4xl text-center mb-8">Product Listings</h1>
-                    <div className="
+    return (
+        <section className="w-full lg:w-6/8 h-full bg-[var(--primary-bg)] p-5">
+            <h1 className="text-4xl text-center mb-8">Product Listings</h1>
+            <div
+                className="
                     grid grid-cols-1 grid-rows-9 place-items-center gap-y-10
-                    lg:grid-rows-3 lg:grid-cols-3">
-                        {
-                            displayContent.map((skin) => {
-                                    return(
-                                        <ContentCard 
-                                            key={skin.id}
-                                            skinName={skin.name}
-                                            skinImage={skin.image} 
-                                            skinPrice={skin.rpPrice}
-                                            setCart={setCart}
-                                            rarity={skin.rarity}
-                                            skin={skin}
-                                            cart={cart}
-                                        />
-                                    )
-                            }                                                    
-                        )}
-                    </div>
-                    <div className="flex flex-row-reverse justify-center gap-10 mt-8 text-white bg-white py-3 rounded w-1/5 m-auto shadow">
-                    {displayContent.length >= 9 ? 
+                    lg:grid-rows-3 lg:grid-cols-3"
+            >
+                {displayContent.map((skin) => {
+                    return (
+                        <ContentCard
+                            key={skin.id}
+                            skinName={skin.name}
+                            skinImage={skin.image}
+                            skinPrice={skin.rpPrice}
+                            setCart={setCart}
+                            rarity={skin.rarity}
+                            skin={skin}
+                            cart={cart}
+                        />
+                    );
+                })}
+            </div>
+        { displayContent.length >= 9 || startIndex > 1 ?
+            <div className="flex flex-row-reverse justify-center gap-10 mt-8 text-white bg-white py-3 rounded w-1/5 m-auto shadow">
+                {displayContent.length >= 9 ? (
                     <button
                         className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"
                         onClick={() => {
-                            if(displayContent.length > 8){
-                                setStartIndex(startIndex + 9)
+                            if (displayContent.length > 8) {
+                                setStartIndex(startIndex + 9);
                             }
                         }}
-                    >Next
+                    >
+                        Next
                     </button>
-                    : ""}
-                    { startIndex > 1 ? 
+                ) : (
+                    ""
+                )}
+                {startIndex > 1 ? (
                     <button
-                        className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"                        
+                        className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"
                         onClick={() => {
-                            if(startIndex > 0){
-                                setStartIndex(startIndex - 9)
+                            if (startIndex > 0) {
+                                setStartIndex(startIndex - 9);
                             }
                         }}
-                    >Back</button>
-                    : ""}
-                </div>
-                
-                
-            </section>
-    )
-}
+                    >
+                        Back
+                    </button>
+                ) : (
+                    ""
+                )}
+            </div>
+        : ""}
+        </section>
+    );
+};
 
 export default ContentProducts;
