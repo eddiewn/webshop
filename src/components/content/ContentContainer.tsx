@@ -18,7 +18,7 @@ const ContentContainer = ({filterChamp, startIndex, setStartIndex, setCart, cart
 
 return(
     <section className="flex gap-6 flex-col lg:flex-row justify-between w-9/10 m-auto">
-        <ContentAside setRarityFilter={setRarityFilter} rarityFilter={rarityFilter}/>
+        <ContentAside setRarityFilter={setRarityFilter} rarityFilter={rarityFilter} setStartIndex={setStartIndex}/>
         <ContentProducts filterChamp={filterChamp} startIndex={startIndex} setStartIndex={setStartIndex} setCart={setCart} cart={cart} rarityFilter={rarityFilter}/>
     </section>
 )

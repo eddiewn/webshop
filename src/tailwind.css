@@ -7,5 +7,6 @@ body{
 }
 
 :root {
-  --primary-bg: #e5f4fb; /* Blue */
+  --primary-bg: #e5f4fb; 
+  --secondary-bg: #3C98A7;
 }
