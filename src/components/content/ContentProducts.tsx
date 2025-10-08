@@ -46,29 +46,31 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
     },[rarityFilter])
 
     return(
-            <section className="w-full lg:w-6/8 h-full bg-[var(--primary-bg)  p-5">
-                <h1 className="text-2xl">Product Listings</h1>
-                <div className="grid grid-cols-1 grid-rows-9 lg:grid-rows-3 lg:grid-cols-3 gap-10 items-center justify-center">
-                    {
-                        displayContent.map((skin) => {
-                                return(
-                                    <ContentCard 
-                                        key={skin.id}
-                                        skinName={skin.name}
-                                        skinImage={skin.image} 
-                                        skinPrice={skin.rpPrice}
-                                        setCart={setCart}
-                                        rarity={skin.rarity}
-                                        skin={skin}
-                                        cart={cart}
-                                    />
-                                )
-                        }                                                    
-                    )}
-                </div>
-                <div className="flex flex-row-reverse justify-center gap-10">
+            <section className="w-full lg:w-6/8 h-full bg-[var(--primary-bg)] p-5">
+                <h1 className="text-4xl text-center mb-8">Product Listings</h1>
+                    <div className="
+                    grid grid-cols-1 grid-rows-9 place-items-center gap-y-10
+                    lg:grid-rows-3 lg:grid-cols-3">
+                        {
+                            displayContent.map((skin) => {
+                                    return(
+                                        <ContentCard 
+                                            key={skin.id}
+                                            skinName={skin.name}
+                                            skinImage={skin.image} 
+                                            skinPrice={skin.rpPrice}
+                                            setCart={setCart}
+                                            rarity={skin.rarity}
+                                            skin={skin}
+                                            cart={cart}
+                                        />
+                                    )
+                            }                                                    
+                        )}
+                    </div>
+                <div className="flex flex-row-reverse justify-center gap-10 mt-8 text-white">
                     <button
-                        className="cursor-pointer"
+                        className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"
                         onClick={() => {
                             if(displayContent.length > 8){
                                 setStartIndex(startIndex + 9)
@@ -77,7 +79,7 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
                     >Next
                     </button>
                     <button
-                        className="cursor-pointer"
+                        className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"                        
                         onClick={() => {
                             if(startIndex > 0){
                                 setStartIndex(startIndex - 9)
