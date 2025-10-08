@@ -68,7 +68,8 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
                             }                                                    
                         )}
                     </div>
-                <div className="flex flex-row-reverse justify-center gap-10 mt-8 text-white">
+                    {displayContent.length >= 9 ? 
+                    <div className="flex flex-row-reverse justify-center gap-10 mt-8 text-white bg-white py-3 rounded w-1/5 m-auto shadow">
                     <button
                         className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"
                         onClick={() => {
@@ -87,6 +88,8 @@ const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart,
                         }}
                     >Back</button>
                 </div>
+                : ""}
+                
             </section>
     )
 }
