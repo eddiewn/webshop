@@ -17,13 +17,15 @@ type Props = {
     filterChamp: string | null;
     setFilterSpecificSkin: (champ: string | null) => void;
     filterSpecificSkin: string | null;
+    setRarityFilter: React.Dispatch<React.SetStateAction<string | null>>;
+
 };
 
-const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpecificSkin, filterSpecificSkin}: Props) => {
+const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpecificSkin, setRarityFilter}: Props) => {
     const [scrolled, setScrolled] = useState<boolean>(false);
     const [hamburgerToggle, setHamburgerToggle] = useState<boolean>(false);
     const [showResults, setShowResults] = useState<boolean>(false);
-    const [searchText, setSearchText] = useState<string>("")
+    const [searchText, setSearchText] = useState<string>("");
 
     const results = fuse.search(searchText);
 
@@ -35,8 +37,6 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
         }
     };
 
-    useState()
-
     useEffect(() => {
         console.log(hamburgerToggle);
     }, [hamburgerToggle]);
@@ -44,6 +44,10 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
         window.addEventListener("scroll", scrollFunc);
         return () => window.removeEventListener("scroll", scrollFunc);
     }, []);
+
+    useEffect(() => {
+
+    })
 
     const champs = ["All", "Viego", "Kha'Zix", "Sion", "Jarvan IV"];
 
@@ -76,11 +80,6 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                             onFocus={() => {
                                 setShowResults(!showResults);
                             }}
-                            onBlur={() => {
-                                setTimeout(() => {
-                                    setShowResults(!showResults);
-                                },1000)
-                            }}
                             onChange={(e) => {
                                 setSearchText(e.target.value)
                             }}
@@ -93,7 +92,10 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                                     className="cursor-pointer"
                                     onClick={() => {
                                         setFilterSpecificSkin(result.item.name)
+                                        setFilterChamp(result.item.champ)
+                                        setRarityFilter(result.item.rarity)
                                         setStartIndex(0)
+                                        setShowResults(!showResults);
                                     }}
                                     >
                                         {result.item.name}

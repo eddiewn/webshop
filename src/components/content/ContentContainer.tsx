@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import ContentAside from "./ContentAside";
 import ContentProducts from "./ContentProducts";
 import type { SkinProps } from "../../types"
@@ -12,11 +10,12 @@ type Props = {
     cart: SkinProps[];
     filterSpecificSkin: string | null;
     setFilterSpecificSkin: (name: string | null) => void;
-}
+    setRarityFilter: React.Dispatch<React.SetStateAction<string | null>>;
+    rarityFilter: string | null;
+}   
 
-const ContentContainer = ({filterChamp, startIndex, setStartIndex, setCart, cart,filterSpecificSkin, setFilterSpecificSkin}: Props) => {
+const ContentContainer = ({filterChamp, startIndex, setStartIndex, setCart, cart,filterSpecificSkin, setFilterSpecificSkin,rarityFilter, setRarityFilter}: Props) => {
 
-    const [rarityFilter, setRarityFilter] = useState<string | null>(null)
 
 return(
     <section className="flex gap-6 flex-col lg:flex-row justify-between w-9/10 m-auto">
