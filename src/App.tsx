@@ -24,7 +24,7 @@ function App() {
     return (
         <>
             <main className="flex flex-col gap-8">
-                <Header cart={cart} setFilterChamp={setFilterChamp} setStartIndex={setStartIndex} filterChamp={filterChamp} filterSpecificSkin={filterSpecificSkin} setFilterSpecificSkin={setFilterSpecificSkin}/>
+                <Header cart={cart} setFilterChamp={setFilterChamp} setStartIndex={setStartIndex} filterChamp={filterChamp} filterSpecificSkin={filterSpecificSkin} setFilterSpecificSkin={setFilterSpecificSkin} setRarityFilter={setRarityFilter}/>
                 <Banner />
                 <ContentContainer filterChamp={filterChamp} startIndex={startIndex} setStartIndex={setStartIndex} setCart={setCart} cart={cart} filterSpecificSkin={filterSpecificSkin} setFilterSpecificSkin={setFilterSpecificSkin} rarityFilter={rarityFilter} setRarityFilter={setRarityFilter}/>
                 <Footer />

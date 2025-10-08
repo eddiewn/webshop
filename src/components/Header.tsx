@@ -92,8 +92,8 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                                     className="cursor-pointer"
                                     onClick={() => {
                                         setFilterSpecificSkin(result.item.name)
-                                        setFilterChamp(result.item.champ)
                                         setRarityFilter(result.item.rarity)
+                                        setFilterChamp(result.item.champ)
                                         setStartIndex(0)
                                         setShowResults(!showResults);
                                     }}
