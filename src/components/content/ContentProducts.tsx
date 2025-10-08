@@ -11,7 +11,8 @@ type Props = {
     setCart: React.Dispatch<React.SetStateAction<SkinProps[]>>;
     cart: SkinProps[];
     rarityFilter: string | null;
-    filterSpecificSkin: string;
+    filterSpecificSkin: string | null;
+    setFilterSpecificSkin: (name: string) => void;
 }
 
 const ContentProducts = ({filterChamp, startIndex, setStartIndex, setCart, cart, rarityFilter, filterSpecificSkin}: Props) => {

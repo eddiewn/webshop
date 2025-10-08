@@ -16,9 +16,10 @@ type Props = {
     cart: object[];
     filterChamp: string | null;
     setFilterSpecificSkin: (champ: string | null) => void;
+    filterSpecificSkin: string | null;
 };
 
-const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpecificSkin}: Props) => {
+const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpecificSkin, filterSpecificSkin}: Props) => {
     const [scrolled, setScrolled] = useState<boolean>(false);
     const [hamburgerToggle, setHamburgerToggle] = useState<boolean>(false);
     const [showResults, setShowResults] = useState<boolean>(false);
@@ -91,8 +92,9 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                                     key={result.item.id}
                                     className="cursor-pointer"
                                     onClick={() => {
-                                        setFilterSpecificSkin(result.item.name)
-                                        setFilterChamp(result.item.champ)
+                                        if(filterSpecificSkin === null){
+                                            setFilterSpecificSkin(result.item.name)
+                                        }
                                         setStartIndex(0)
                                     }}
                                     >
@@ -140,6 +142,7 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                                         champ == "All" ? null : champ
                                     );
                                     setStartIndex(0);
+                                    setFilterSpecificSkin(null)
                                 }}
                             >
                                 {champ}

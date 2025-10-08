@@ -3,10 +3,10 @@ type Props = {
     setRarityFilter: React.Dispatch<React.SetStateAction<string | null>>;
     rarityFilter: string | null;
     setStartIndex: (startIndex: number) => void;
-
+    setFilterSpecificSkin: (name: string | null) => void;
 }
 
-const ContentAside = ({setRarityFilter, rarityFilter, setStartIndex}: Props) => {
+const ContentAside = ({setRarityFilter, rarityFilter, setStartIndex, setFilterSpecificSkin}: Props) => {
 
     const allRarities = [
         "All",
@@ -33,6 +33,7 @@ const ContentAside = ({setRarityFilter, rarityFilter, setStartIndex}: Props) => 
                             <li className={`cursor-pointer ${rarity === rarityFilter || (rarity === "All" && rarityFilter === null) ? "text-blue-300" : ""}`} onClick={(() => {
                                 setRarityFilter(rarity == "All" ? null : rarity)
                                 setStartIndex(0)
+                                setFilterSpecificSkin(null)
                         })}>{rarity}</li>
                         )
                     })}
