@@ -115,7 +115,7 @@ const Header = ({setFilterChamp, setStartIndex, cart, filterChamp, setFilterSpec
                             <li>Home</li>
                             <li>Shop</li>
                             <li>
-                                <div className="flex">
+                                <div className="flex w-5 mr-3 gap-1">
                                     <img src="shoppingCart.png" alt="" />
                                     <span className="text-xl">
                                         {cart.length}
