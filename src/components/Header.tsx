@@ -111,14 +111,14 @@ const Header = ({
                             ""
                         )}
                 </div>
-                    <nav className="flex flex-row justify-center items-center h-full">
+                    <button className="flex flex-row justify-center items-center w-20 h-full">
                         <img src="shoppingCart.png" alt="" />
                         <span className="text-xl">{cart.length}</span>
-                    </nav>
+                    </button>
                 {/*Hamburger Menu*/}
                 <div className="md:hidden flex">
                     <button
-                        className="flex flex-col justify-center gap-1 mr-5"
+                        className="flex flex-col justify-center gap-1"
                         onClick={() => setHamburgerToggle(!hamburgerToggle)}
                         aria-label="Toggle menu"
                     >
