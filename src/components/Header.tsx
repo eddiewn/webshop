@@ -54,25 +54,25 @@ const Header = ({
 
     return (
         <header
-            className={`m-auto sticky top-0 z-50 w-screen bg-[var(--primary-bg)] h-25 lg:h-40 mt-6 text-2xl border-white border-b-0
+            className={`m-auto sticky top-0 z-50 w-screen bg-[var(--primary-bg)] h-25 md:h-40 mt-6 text-2xl border-white border-b-0
                 flex flex-col
                 ease-in-out duration-300 ${
                     scrolled
-                        ? "lg:w-screen lg:top-0 lg:rounded-none border-b-2 shadow "
-                        : "lg:w-9/10 "
+                        ? "md:w-screen md:top-0 md:rounded-none border-b-2 shadow "
+                        : "md:w-9/10 "
                 } `}
         >
             <div
-                className={`flex lg:flex-row justify-between items-center h-full lg:h-1/2 gap-5 `}
+                className={`flex md:flex-row justify-between items-center h-full md:h-1/2 gap-5 `}
             >
                 <img
-                    className="h-3/5 lg:h-4/5 w-20 ml-3 rounded"
+                    className="h-3/5 md:h-4/5 w-20 ml-3 rounded"
                     src="/viegoChampie.webp"
                     alt=""
                 />
-                <div className="relative lg:w-1/5">
+                <div className="relative md:w-1/5">
                         <input
-                            className="border-2 border-gray-500 rounded-xl w-30 lg:w-full h-3/5 pl-2 lg:pl-6 bg-white text-sm lg:text-2xl"
+                            className="border-2 border-gray-500 rounded-xl w-30 md:w-full h-3/5 pl-2 md:pl-6 bg-white text-sm md:text-2xl"
                             type="text"
                             placeholder="Search..."
                             onFocus={() => {
@@ -88,11 +88,11 @@ const Header = ({
                             }}
                         />
                         {showResults ? (
-                            <ul className="flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] lg:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
+                            <ul className="flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] md:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
                                 {results.slice(0, 5).map((result) => (
                                     <li
                                         key={result.item.id}
-                                        className="cursor-pointer text-sm lg:text-2xl hover:scale-110 origin-top-left"
+                                        className="cursor-pointer text-sm md:text-2xl hover:scale-110 origin-top-left"
                                         onClick={() => {
                                             setFilterSpecificSkin(
                                                 result.item.name
@@ -129,9 +129,9 @@ const Header = ({
                     </button>
                 </div>
             </div>
-            <nav className={`${hamburgerToggle ? "" : "hidden"} md:flex flex-row w-full h-0 lg:h-1/2`}>
+            <nav className={`${hamburgerToggle ? "" : "hidden"} md:flex flex-row w-full h-0 md:h-1/2`}>
                 <ul
-                    className={`flex lg:flex-row flex-col items-center gap-6 lgh-full p-6 bg-white ${
+                    className={`flex md:flex-row flex-col items-center gap-6 lgh-full p-6 bg-white ${
                         scrolled
                             ? "rounded-tr-xl shadow-[2px_-2px_5px_-5px_rgba(0,0,0,0.5)]"
                             : "rounded-xl shadow"
