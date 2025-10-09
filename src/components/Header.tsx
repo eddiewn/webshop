@@ -63,7 +63,7 @@ const Header = ({
                 } `}
         >
             <div
-                className={`ease-in-out transition-all duration-300 flex md:flex-row justify-between items-center h-full md:h-1/2 gap-5 mr-0 ${scrolled ? "mr-10" : ""} `}
+                className={`ease-in-out transition-all duration-300 flex md:flex-row justify-between items-center h-full md:h-1/2 gap-5 mr-10`}
             >
                 <img
                     className="h-3/5 md:h-4/5 w-20 ml-3 rounded"
@@ -130,9 +130,9 @@ const Header = ({
             </div>
             <nav className={`${hamburgerToggle ? "" : "hidden"} md:flex flex-row w-full h-0 md:h-1/2`}>
                 <ul
-                    className={`flex md:flex-row flex-col items-center gap-6 lgh-full p-6 bg-white ${
+                    className={`flex md:flex-row flex-col items-center gap-6 lgh-full p-6 bg-white shadow rounded-br-xl rounded-bl-xl md:rounded ${
                         scrolled
-                            ? "rounded-tr-xl shadow-[2px_-2px_5px_-5px_rgba(0,0,0,0.5)]"
+                            ? "md:rounded-none md:rounded-tr-xl md:shadow-[2px_-2px_5px_-5px_rgba(0,0,0,0.5)]"
                             : "rounded-xl shadow"
                     }`}
                 >
