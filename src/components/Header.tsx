@@ -88,7 +88,7 @@ const Header = ({
                             }}
                         />
                         {showResults ? (
-                            <ul className="flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] md:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
+                            <ul className="flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] lg:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
                                 {results.slice(0, 5).map((result) => (
                                     <li
                                         key={result.item.id}
