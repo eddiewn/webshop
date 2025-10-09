@@ -63,15 +63,16 @@ const Header = ({
                 } `}
         >
             <div
-                className={`flex lg:flex-row justify-between items-center h-full lg:h-1/2 `}
+                className={`flex lg:flex-row justify-between items-center h-full lg:h-1/2 gap-5 `}
             >
                 <img
                     className="h-3/5 lg:h-4/5 w-20 ml-3 rounded"
                     src="/viegoChampie.webp"
                     alt=""
                 />
+                <div className="relative lg:w-1/5">
                         <input
-                            className="border-2 border-gray-500 rounded-xl w-40 h-3/5 pl-2 lg:pl-6 bg-white"
+                            className="border-2 border-gray-500 rounded-xl w-30 lg:w-full h-3/5 pl-2 lg:pl-6 bg-white text-sm lg:text-2xl"
                             type="text"
                             placeholder="Search..."
                             onFocus={() => {
@@ -87,11 +88,11 @@ const Header = ({
                             }}
                         />
                         {showResults ? (
-                            <ul className="top-11 absolute bg-white w-full rounded p-3">
+                            <ul className="flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] lg:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
                                 {results.slice(0, 5).map((result) => (
                                     <li
                                         key={result.item.id}
-                                        className="cursor-pointer"
+                                        className="cursor-pointer text-sm lg:text-2xl hover:scale-110 origin-top-left"
                                         onClick={() => {
                                             setFilterSpecificSkin(
                                                 result.item.name
@@ -109,14 +110,16 @@ const Header = ({
                         ) : (
                             ""
                         )}
+                </div>
                     <nav className="flex flex-row justify-center items-center h-full">
                         <img src="shoppingCart.png" alt="" />
                         <span className="text-xl">{cart.length}</span>
                     </nav>
+
                 {/*Hamburger Menu*/}
                 <div className="md:hidden flex">
                     <button
-                        className="flex flex-col justify-center gap-1"
+                        className="flex flex-col justify-center gap-1 mr-5"
                         onClick={() => setHamburgerToggle(!hamburgerToggle)}
                         aria-label="Toggle menu"
                     >
