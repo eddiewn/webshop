@@ -70,7 +70,7 @@ const Header = ({
                     src="/viegoChampie.webp"
                     alt=""
                 />
-                <div className="relative md:w-1/5">
+                <div className="relative ml-auto md:w-1/5">
                         <input
                             className="border-2 border-gray-500 rounded-xl w-30 md:w-full h-3/5 pl-2 md:pl-6 bg-white text-sm md:text-2xl"
                             type="text"
@@ -115,7 +115,6 @@ const Header = ({
                         <img src="shoppingCart.png" alt="" />
                         <span className="text-xl">{cart.length}</span>
                     </nav>
-
                 {/*Hamburger Menu*/}
                 <div className="md:hidden flex">
                     <button
