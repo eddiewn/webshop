@@ -28,7 +28,7 @@ const ContentCard = ({key, skinName, skinImage, skinPrice, setCart,rarity, skin,
                         alt="" 
                     />
                 </div>
-                <h1 className="text-yellow-600 text-2xl text-center">{skinName}</h1>
+                <h1 className="text-yellow-600 text-2xl text-center py-3">{skinName}</h1>
                 <p>{skinPrice}</p>
                 <p>{rarity}</p>
                 <button className="text-xl cursor-pointer text-teal-50 bg-[var(--secondary-bg)] rounded-full py-3 px-6 w-4/5 mt-auto mb-8" onClick={() => {
