@@ -78,9 +78,9 @@ const Header = ({
                                 setShowResults(!showResults);
                             }}
                             onBlur={() => {
-                                if (searchText !== "") {
-                                    setShowResults(!showResults);
-                                }
+                                // if (searchText !== "") {
+                                //     setShowResults(!showResults);
+                                // }
                             }}
                             onChange={(e) => {
                                 setSearchText(e.target.value);
