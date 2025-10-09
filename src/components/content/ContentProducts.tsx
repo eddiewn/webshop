@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useRef, useEffect, useState} from "react";
 
 import products from "../../data/products";
 import ContentCard from "./ContentCard";
@@ -30,6 +30,7 @@ const ContentProducts = ({
         contentList.slice(startIndex, startIndex + 9)
     );
 
+    const gridRef = useRef<HTMLElement | null>(null);
     useEffect(() => {
         if (filterChamp !== null) return;
         setDisplayContent(contentList.slice(startIndex, startIndex + 9));
@@ -60,14 +61,35 @@ const ContentProducts = ({
     useEffect(() => {
         console.log(rarityFilter);
     }, [rarityFilter]);
+const scrollToGrid = () => {
+    if (gridRef.current) {
+        let headerOffset;
+        if(window.innerWidth < 1000){
+            headerOffset = 100;
+        }else{
+            headerOffset = 160;
+        }
+
+        const elementPosition = gridRef.current.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+        });
+    }
+}
 
     return (
-        <section className="flex flex-col w-full lg:w-6/8 h-full bg-[var(--primary-bg)] p-5">
+        <section
+            ref={gridRef}
+            className="flex flex-col w-full lg:w-6/8 h-full bg-[var(--primary-bg)] p-5"
+        >
             <h1 className="text-4xl text-center mb-8">Product Listings</h1>
             <div
                 className="
                     grid grid-cols-1 grid-rows-9 place-items-center gap-y-10 auto-rows-fr
-                    lg:grid-rows-1 md:grid-rows-3 lg:grid-cols-3" 
+                    lg:grid-rows-1 md:grid-rows-3 lg:grid-cols-3"
             >
                 {displayContent.map((skin) => {
                     return (
@@ -84,38 +106,42 @@ const ContentProducts = ({
                     );
                 })}
             </div>
-        { displayContent.length >= 9 || startIndex > 1 ?
-            <div className="flex flex-row-reverse justify-center gap-10 mt-8 text-white bg-white py-3 rounded w-1/5 m-auto shadow">
-                {displayContent.length >= 9 ? (
-                    <button
-                        className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"
-                        onClick={() => {
-                            if (displayContent.length > 8) {
-                                setStartIndex(startIndex + 9);
-                            }
-                        }}
-                    >
-                        Next
-                    </button>
-                ) : (
-                    ""
-                )}
-                {startIndex > 1 ? (
-                    <button
-                        className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"
-                        onClick={() => {
-                            if (startIndex > 0) {
-                                setStartIndex(startIndex - 9);
-                            }
-                        }}
-                    >
-                        Back
-                    </button>
-                ) : (
-                    ""
-                )}
-            </div>
-        : ""}
+            {displayContent.length >= 9 || startIndex > 1 ? (
+                <div className="flex flex-row-reverse justify-center gap-10 mt-8 text-white bg-white p-3 rounded m-auto shadow">
+                    {displayContent.length >= 9 ? (
+                        <button
+                            className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"
+                            onClick={() => {
+                                scrollToGrid();
+                                if (displayContent.length > 8) {
+                                    setStartIndex(startIndex + 9);
+                                }
+                            }}
+                        >
+                            Next
+                        </button>
+                    ) : (
+                        ""
+                    )}
+                    {startIndex > 1 ? (
+                        <button
+                            className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"
+                            onClick={() => {
+                                scrollToGrid();
+                                if (startIndex > 0) {
+                                    setStartIndex(startIndex - 9);
+                                }
+                            }}
+                        >
+                            Back
+                        </button>
+                    ) : (
+                        ""
+                    )}
+                </div>
+            ) : (
+                ""
+            )}
         </section>
     );
 };
