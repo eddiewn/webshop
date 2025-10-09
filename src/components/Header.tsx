@@ -63,7 +63,7 @@ const Header = ({
                 } `}
         >
             <div
-                className={`flex md:flex-row justify-between items-center h-full md:h-1/2 gap-5 `}
+                className={`ease-in-out transition-all duration-300 flex md:flex-row justify-between items-center h-full md:h-1/2 gap-5 mr-0 ${scrolled ? "mr-10" : ""} `}
             >
                 <img
                     className="h-3/5 md:h-4/5 w-20 ml-3 rounded"

@@ -3,8 +3,8 @@ const Footer = () => {
         <footer className="relative w-screen bg-[var(--secondary-bg)]">
             <section className="flex flex-col md:flex-row items-center md:justify-around gap-20 mb-20">
                 <section className="w-4/5 md:w-1/5">
-                    <h2 className="text-2xl text-center">Follow Us</h2>
-                    <ul>
+                    <h2 className=" text-2xl text-center">Follow Us</h2>
+                    <ul className="text-center">
                         <li>
                             <a href="https://twitter.com">Twitter</a>
                         </li>
