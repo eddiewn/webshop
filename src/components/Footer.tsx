@@ -21,6 +21,7 @@ const Footer = () => {
                     <ul>
                         <li>Lead Developer: Eddie Wiik Nilsson</li>
                         <li>Designer: Eddie Wiik Nilsson</li>
+                        <li>Chief Technical Officer: Eddie Wiik Nilsson</li>
                     </ul>
                 </section>
                 <section className="w-4/5 md:w-1/5">
