@@ -54,7 +54,7 @@ const Header = ({
 
     return (
         <header
-            className={`m-auto sticky top-0 z-50 w-full bg-[var(--primary-bg)] h-25 md:h-40 mt-6 text-2xl border-white border-b-0 overflow-x-hidden
+            className={`m-auto sticky top-0 z-50 w-full bg-[var(--primary-bg)] h-25 md:h-40 mt-6 text-2xl border-white border-b-0 
                 flex flex-col
                 ease-in-out duration-300 
                 ${
