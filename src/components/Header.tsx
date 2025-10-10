@@ -27,8 +27,9 @@ const Header = ({
 }: Props) => {
     const [scrolled, setScrolled] = useState<boolean>(false);
     const [hamburgerToggle, setHamburgerToggle] = useState<boolean>(false);
-    const [showResults, setShowResults] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>("");
+    const [showResults, setShowResults] = useState<boolean>(false);
+
 
     const results = fuse.search(searchText ? searchText : "Viego");
 
@@ -65,6 +66,8 @@ const Header = ({
                 `}
             
         >
+
+
             <div
                 className={`ease-in-out transition-all duration-300 flex md:flex-row justify-between items-center h-full md:h-1/2 gap-5 mr-10`}
             >
@@ -75,23 +78,23 @@ const Header = ({
                 />
                 <div className="relative ml-auto md:w-1/5">
                         <input
-                            className="pl-2 text-sm bg-white border-2 border-gray-500 rounded-xl w-30 md:w-full h-3/5 md:pl-6 md:text-2xl"
+                            className="z-50 pl-2 text-sm bg-white border-2 border-gray-500 rounded-xl w-30 md:w-full h-3/5 md:pl-6 md:text-2xl"
                             type="text"
                             placeholder="Search..."
                             onFocus={() => {
-                                setShowResults(!showResults);
-                            }}
-                            onBlur={() => {
-                                // if (searchText !== "") {
-                                //     setShowResults(!showResults);
-                                // }
+                                setShowResults(true);
                             }}
                             onChange={(e) => {
                                 setSearchText(e.target.value);
                             }}
                         />
                         {showResults ? (
-                            <ul className="flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] lg:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
+                            <div>
+                                <div
+                                    className="fixed inset-0 z-40"
+                                    onClick={() => setShowResults(false)}
+                                ></div>
+                            <ul className="z-50 flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] lg:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
                                 {results.slice(0, 5).map((result) => (
                                     <li
                                         key={result.item.id}
@@ -109,7 +112,9 @@ const Header = ({
                                         {result.item.name}
                                     </li>
                                 ))}
+
                             </ul>
+                            </div>
                         ) : (
                             ""
                         )}

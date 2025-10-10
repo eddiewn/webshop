@@ -16,6 +16,7 @@ function App() {
     const [cart, setCart] = useState<SkinProps[]>([])
     const [rarityFilter, setRarityFilter] = useState<string | null>(null)
 
+
     useEffect(() => {
         console.log(cart)
     },[cart])
@@ -26,8 +27,9 @@ function App() {
                 <Header cart={cart} setFilterChamp={setFilterChamp} setStartIndex={setStartIndex} filterChamp={filterChamp} filterSpecificSkin={filterSpecificSkin} setFilterSpecificSkin={setFilterSpecificSkin} setRarityFilter={setRarityFilter}/>
                 <Banner />
                 <ContentContainer filterChamp={filterChamp} startIndex={startIndex} setStartIndex={setStartIndex} setCart={setCart} cart={cart} filterSpecificSkin={filterSpecificSkin} setFilterSpecificSkin={setFilterSpecificSkin} rarityFilter={rarityFilter} setRarityFilter={setRarityFilter}/>
-                {/* <Footer /> */}
+                <Footer />
             </main>
+
         </>
     )
 }
