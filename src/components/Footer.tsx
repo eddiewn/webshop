@@ -1,8 +1,9 @@
 const Footer = () => {
     return (
-        <footer className="relative w-screen bg-[var(--secondary-bg)]">
-            <section className="flex flex-col md:flex-row items-center md:justify-around gap-20 mb-20">
-                <section className="w-4/5 md:w-1/5">
+        <footer className="relative w-screen bg-[var(--secondary-bg)] text-white">
+        <section className="flex flex-col md:flex-row items-center md:justify-around gap-20 pt-20">
+            <section className="flex w-1/2 flex-col md:flex-row items-center md:justify-around mb-20">
+                <section className="w-full">
                     <h2 className=" text-2xl text-center">Follow Us</h2>
                     <ul className="text-center">
                         <li>
@@ -16,7 +17,7 @@ const Footer = () => {
                         </li>
                     </ul>
                 </section>
-                <section className="w-4/5 md:w-1/5">
+                <section className="w-full">
                     <h3 className="text-2xl text-center">Team</h3>
                     <ul>
                         <li>Lead Developer: Eddie Wiik Nilsson</li>
@@ -26,8 +27,15 @@ const Footer = () => {
                         <li>Janitor: Eddie Wiik Nilsson</li>
                     </ul>
                 </section>
-                <section className="w-4/5 md:w-1/5">
-                    <h2 className="text-2xl ">Contact us</h2>
+            </section>
+                <section className="w-2/5">
+                    <form className="flex flex-col gap-5 text-2xl text-black">
+                        <h1 className="text-white">Contact us</h1>
+                        <input className="bg-white" type="text" placeholder="Subject"/>
+                        <input className="bg-white" type="text" placeholder="Email" />
+                        <input className="bg-white" type="text" placeholder="Message" />
+                        <button>Submit</button>
+                    </form>
                 </section>
             </section>
 

@@ -54,13 +54,16 @@ const Header = ({
 
     return (
         <header
-            className={`m-auto sticky top-0 z-50 w-screen bg-[var(--primary-bg)] h-25 md:h-40 mt-6 text-2xl border-white border-b-0
+            className={`m-auto sticky top-0 z-50 w-full bg-[var(--primary-bg)] h-25 md:h-40 mt-6 text-2xl border-white border-b-0 overflow-x-hidden
                 flex flex-col
-                ease-in-out duration-300 ${
+                ease-in-out duration-300 
+                ${
                     scrolled
-                        ? "md:w-screen md:top-0 md:rounded-none border-b-2 shadow "
-                        : "md:w-9/10 "
-                } `}
+                        ? "md:top-0 md:rounded-none border-b-2 shadow"
+                        : "md:w-9/10"
+                } 
+                `}
+            
         >
             <div
                 className={`ease-in-out transition-all duration-300 flex md:flex-row justify-between items-center h-full md:h-1/2 gap-5 mr-10`}
