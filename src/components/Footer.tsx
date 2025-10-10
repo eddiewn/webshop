@@ -1,10 +1,10 @@
 const Footer = () => {
     return (
         <footer className="relative w-screen bg-[var(--secondary-bg)] text-white">
-        <section className="flex flex-col md:flex-row items-center md:justify-around gap-20 pt-20">
-            <section className="flex w-1/2 flex-col md:flex-row items-center md:justify-around mb-20">
+        <section className="flex flex-col items-center gap-20 pt-20 md:flex-row md:justify-around">
+            <section className="flex flex-col items-center w-1/2 mb-20 md:flex-row md:justify-around">
                 <section className="w-full">
-                    <h2 className=" text-2xl text-center">Follow Us</h2>
+                    <h2 className="text-2xl text-center ">Follow Us</h2>
                     <ul className="text-center">
                         <li>
                             <a href="https://twitter.com">Twitter</a>
@@ -39,7 +39,7 @@ const Footer = () => {
                 </section>
             </section>
 
-            <small className="absolute text-center bottom-0 left-1/2 -translate-x-1/2">
+            <small className="absolute bottom-0 text-center -translate-x-1/2 left-1/2">
                 @2025 Viego Webshop | All Rights reserved
             </small>
         </footer>
