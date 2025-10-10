@@ -13,7 +13,7 @@ type Props = {
 
 const ContentCard = ({key, skinName, skinImage, skinPrice, setCart,rarity, skin, cart}: Props) => {
     return(
-            <div key={key} className="flex flex-col items-center gap-3
+            <div key={key} className="flex flex-col items-center gap-3 shadow-[10px_10px_10px_rgba(0,0,0,0.2)]
             bg-white w-full lg:w-3/4 rounded-4xl lg:h-110">
                 <div className="relative">
                     <img 
