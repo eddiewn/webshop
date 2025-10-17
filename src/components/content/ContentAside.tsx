@@ -30,11 +30,13 @@ const ContentAside = ({setRarityFilter, rarityFilter, setStartIndex, setFilterSp
                 <ul className="flex flex-col gap-2 w-full h-full text-xl rounded">
                     {allRarities.map((rarity) => {
                         return(
-                            <li className={`cursor-pointer ${rarity === rarityFilter || (rarity === "All" && rarityFilter === null) ? "text-blue-300" : ""}`} onClick={(() => {
-                                setRarityFilter(rarity == "All" ? null : rarity)
-                                setStartIndex(0)
-                                setFilterSpecificSkin(null)
-                        })}>{rarity}</li>
+                            <li className={`cursor-pointer ${rarity === rarityFilter || (rarity === "All" && rarityFilter === null) ? "text-blue-300" : ""}`} 
+                                onClick={(() => {
+                                    setRarityFilter(rarity == "All" ? null : rarity)
+                                    setStartIndex(0)
+                                    setFilterSpecificSkin(null)
+                                })}>{rarity}
+                            </li>
                         )
                     })}
                 </ul>
