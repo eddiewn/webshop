@@ -85,11 +85,9 @@ const scrollToGrid = () => {
             ref={gridRef}
             className="flex flex-col w-full lg:w-6/8 h-full bg-[var(--primary-bg)] p-5"
         >
-            <h1 className="text-4xl text-center mb-8">Product Listings</h1>
+            <h1 className="mb-8 text-4xl text-center">Product Listings</h1>
             <div
-                className="
-                    grid grid-cols-1 grid-rows-9 place-items-center gap-y-10 auto-rows-fr
-                    lg:grid-rows-1 md:grid-rows-3 md:grid-cols-3"
+                className="grid grid-cols-1 grid-rows-9 place-items-center gap-y-10 auto-rows-fr lg:grid-rows-1 md:grid-rows-3 lg:grid-cols-3"
             >
                 {displayContent.map((skin) => {
                     return (
@@ -107,7 +105,7 @@ const scrollToGrid = () => {
                 })}
             </div>
             {displayContent.length >= 9 || startIndex > 1 ? (
-                <div className="flex flex-row-reverse justify-center gap-10 mt-8 text-white bg-white p-3 rounded m-auto">
+                <div className="flex flex-row-reverse justify-center gap-10 p-3 m-auto mt-8 text-white bg-white rounded">
                     {displayContent.length >= 9 ? (
                         <button
                             className="cursor-pointer w-20 h-10 bg-[var(--secondary-bg)] rounded-xl"

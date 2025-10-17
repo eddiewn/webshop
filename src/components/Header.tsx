@@ -27,8 +27,9 @@ const Header = ({
 }: Props) => {
     const [scrolled, setScrolled] = useState<boolean>(false);
     const [hamburgerToggle, setHamburgerToggle] = useState<boolean>(false);
-    const [showResults, setShowResults] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>("");
+    const [showResults, setShowResults] = useState<boolean>(false);
+
 
     const results = fuse.search(searchText ? searchText : "Viego");
 
@@ -65,37 +66,39 @@ const Header = ({
                 `}
             
         >
+
+
             <div
                 className={`ease-in-out transition-all duration-300 flex md:flex-row justify-between items-center h-full md:h-1/2 gap-5 mr-10`}
             >
                 <img
-                    className="h-3/5 md:h-4/5 w-20 ml-3 rounded"
+                    className="w-20 ml-3 rounded h-3/5 md:h-4/5"
                     src="/viegoChampie.webp"
                     alt=""
                 />
                 <div className="relative ml-auto md:w-1/5">
                         <input
-                            className="border-2 border-gray-500 rounded-xl w-30 md:w-full h-3/5 pl-2 md:pl-6 bg-white text-sm md:text-2xl"
+                            className="z-50 pl-2 text-sm bg-white border-2 border-gray-500 rounded-xl w-30 md:w-full h-3/5 md:pl-6 md:text-2xl"
                             type="text"
                             placeholder="Search..."
                             onFocus={() => {
-                                setShowResults(!showResults);
-                            }}
-                            onBlur={() => {
-                                // if (searchText !== "") {
-                                //     setShowResults(!showResults);
-                                // }
+                                setShowResults(true);
                             }}
                             onChange={(e) => {
                                 setSearchText(e.target.value);
                             }}
                         />
                         {showResults ? (
-                            <ul className="flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] lg:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
+                            <div>
+                                <div
+                                    className="fixed inset-0 z-40"
+                                    onClick={() => setShowResults(false)}
+                                ></div>
+                            <ul className="z-50 flex flex-col align-center justify-evenly top-10 w-[calc(100%+8rem)] lg:w-full absolute bg-white min-h-1/1.2 rounded p-3 ex ">
                                 {results.slice(0, 5).map((result) => (
                                     <li
                                         key={result.item.id}
-                                        className="cursor-pointer text-sm md:text-2xl hover:scale-110 origin-top-left"
+                                        className="text-sm origin-top-left cursor-pointer md:text-2xl hover:scale-110"
                                         onClick={() => {
                                             setFilterSpecificSkin(
                                                 result.item.name
@@ -109,17 +112,19 @@ const Header = ({
                                         {result.item.name}
                                     </li>
                                 ))}
+
                             </ul>
+                            </div>
                         ) : (
                             ""
                         )}
                 </div>
-                    <button className="flex flex-row justify-center items-center w-20 h-full">
+                    <button className="flex flex-row items-center justify-center w-20 h-full">
                         <img src="shoppingCart.png" alt="" />
                         <span className="text-xl">{cart.length}</span>
                     </button>
                 {/*Hamburger Menu*/}
-                <div className="md:hidden flex">
+                <div className="flex md:hidden">
                     <button
                         className="flex flex-col justify-center gap-1"
                         onClick={() => setHamburgerToggle(!hamburgerToggle)}

@@ -24,10 +24,10 @@ const ContentAside = ({setRarityFilter, rarityFilter, setStartIndex, setFilterSp
     ]
 
     return(
-        <aside className="w-full lg:w-2/10 h-full bg-white rounded-xl">
+        <aside className="w-full h-full bg-white lg:w-2/10 rounded-xl">
             <section className="p-5 text-2xl">
             <h1 className="pb-3 text-center">Filter Rarities</h1>
-                <ul className="flex flex-col gap-2 w-full h-full text-xl rounded">
+                <ul className="flex flex-col w-full h-full gap-2 text-xl rounded">
                     {allRarities.map((rarity) => {
                         return(
                             <li className={`cursor-pointer ${rarity === rarityFilter || (rarity === "All" && rarityFilter === null) ? "text-blue-300" : ""}`} 
